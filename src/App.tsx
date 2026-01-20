@@ -15,13 +15,12 @@ import { dataProvider } from "./providers/data";
 import Dashboard from "./pages/Dashboard";
 import { BookOpen, Home } from "lucide-react";
 import { Layout } from "./components/refine-ui/layout/layout";
-import SubjectsList from "./pages/subjects/list";
+import SubjectsList from "./pages/subjects/List";
 import SubjectsCreate from "./pages/subjects/Create";
 
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ThemeProvider>
           <DevtoolsProvider>
@@ -63,12 +62,7 @@ function App() {
                   </Route>
                 </Route>
               </Routes>
-              <Toaster />
-              <RefineKbar />
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
             </Refine>
-            <DevtoolsPanel />
           </DevtoolsProvider>
         </ThemeProvider>
       </RefineKbarProvider>
