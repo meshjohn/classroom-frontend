@@ -2,6 +2,7 @@ import { CreateView } from "@/components/refine-ui/views/create-view.tsx";
 import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { useBack } from "@refinedev/core";
+import { useForm } from "@refinedev/react-hook-form";
 import { Separator } from "@/components/ui/separator.tsx";
 import {
   Card,
@@ -10,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card.tsx";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { classSchema } from "@/lib/schema.ts";
 import * as z from "zod";
 
@@ -126,12 +126,31 @@ const Create = () => {
           <CardContent className="mt-7">
             <Form {...form}>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                <div className="space-y-3">
-                  <Label>
-                    Banner Image <span className="text-orange-600">*</span>
-                  </Label>
-                  <UploadWidget />
-                </div>
+                <FormField
+                  control={control}
+                  name="bannerUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        Banner Image <span className="text-orange-600">*</span>
+                      </FormLabel>
+                      <FormControl>
+                        <UploadWidget
+                          value={
+                            field.value
+                              ? {
+                                  url: field.value,
+                                  publicId: bannerPublicId ?? "",
+                                }
+                              : null
+                          }
+                          onChange={(file) => setBannerImage(file, field)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 <FormField
                   control={control}
                   name="name"

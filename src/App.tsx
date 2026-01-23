@@ -1,14 +1,10 @@
-import { GitHubBanner, Refine, WelcomePage } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import { Refine } from "@refinedev/core";
+import { DevtoolsProvider } from "@refinedev/devtools";
+import { RefineKbarProvider } from "@refinedev/kbar";
 
-import routerProvider, {
-  DocumentTitleHandler,
-  UnsavedChangesNotifier,
-} from "@refinedev/react-router";
+import routerProvider from "@refinedev/react-router";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router";
 import "./App.css";
-import { Toaster } from "./components/refine-ui/notification/toaster";
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import { dataProvider } from "./providers/data";
