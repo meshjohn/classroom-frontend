@@ -6,7 +6,6 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 import { Position } from "@cloudinary/url-gen/qualifiers";
 import { compass } from "@cloudinary/url-gen/qualifiers/gravity";
 import { text } from "@cloudinary/url-gen/qualifiers/source";
-// @ts-ignore
 import { TextStyle } from "@cloudinary/url-gen/qualifiers/textStyle";
 
 const cld = new Cloudinary({
