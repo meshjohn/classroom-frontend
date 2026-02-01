@@ -6,7 +6,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 import { Position } from "@cloudinary/url-gen/qualifiers";
 import { compass } from "@cloudinary/url-gen/qualifiers/gravity";
 import { text } from "@cloudinary/url-gen/qualifiers/source";
-import { TextStyle } from "@cloudinary/url-gen/qualifiers/textstyle";
+import { TextStyle } from "@cloudinary/url-gen/valueObjects/textStyle";
 
 const cld = new Cloudinary({
   cloud: { cloudName: CLOUDINARY_CLOUD_NAME },
@@ -24,10 +24,6 @@ export const bannerPhoto = (imageCldPubId: string, name: string) => {
         text(name, new TextStyle("roboto", 100).fontWeight("bold")).textColor(
           "white",
         ),
-      ).position(
-        new Position()
-          .gravity(compass("west"))
-          .offsetX(0.02),
-      ),
+      ).position(new Position().gravity(compass("west")).offsetX(0.02)),
     );
 };
