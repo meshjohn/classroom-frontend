@@ -27,7 +27,7 @@ import {
   useRefineOptions,
   type TreeMenuItem,
 } from "@refinedev/core";
-import { ChevronRight, ListIcon } from "lucide-react";
+import { ChevronRight, ListIcon, School } from "lucide-react";
 import React from "react";
 
 export function Sidebar() {
@@ -52,7 +52,7 @@ export function Sidebar() {
           {
             "px-3": open,
             "px-1": !open,
-          }
+          },
         )}
       >
         {menuItems.map((item: TreeMenuItem) => (
@@ -112,7 +112,7 @@ function SidebarItemGroup({ item, selectedKey }: MenuItemProps) {
             "opacity-100": open,
             "pointer-events-none": !open,
             "pointer-events-auto": open,
-          }
+          },
         )}
       >
         {getDisplayName(item)}
@@ -144,7 +144,7 @@ function SidebarItemCollapsible({ item, selectedKey }: MenuItemProps) {
         "text-muted-foreground",
         "transition-transform",
         "duration-200",
-        "group-data-[state=open]:rotate-90"
+        "group-data-[state=open]:rotate-90",
       )}
     />
   );
@@ -210,7 +210,7 @@ function SidebarItemLink({ item, selectedKey }: MenuItemProps) {
 }
 
 function SidebarHeader() {
-  const { title } = useRefineOptions();
+  const title = "Classroom";
   const { open, isMobile } = useShadcnSidebar();
 
   return (
@@ -223,7 +223,7 @@ function SidebarHeader() {
         "flex-row",
         "items-center",
         "justify-between",
-        "overflow-hidden"
+        "overflow-hidden",
       )}
     >
       <div
@@ -240,10 +240,12 @@ function SidebarHeader() {
           {
             "pl-3": !open,
             "pl-5": open,
-          }
+          },
         )}
       >
-        <div>{title.icon}</div>
+        <div>
+          <School />{" "}
+        </div>
         <h2
           className={cn(
             "text-sm",
@@ -253,10 +255,10 @@ function SidebarHeader() {
             {
               "opacity-0": !open,
               "opacity-100": open,
-            }
+            },
           )}
         >
-          {title.text}
+          {title}
         </h2>
       </div>
 
@@ -347,7 +349,7 @@ function SidebarButton({
           "text-sidebar-primary-foreground": isSelected,
           "hover:text-sidebar-primary-foreground": isSelected,
         },
-        className
+        className,
       )}
       onClick={onClick}
       {...props}

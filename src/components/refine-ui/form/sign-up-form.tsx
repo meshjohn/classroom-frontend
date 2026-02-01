@@ -22,8 +22,10 @@ import {
   useRefineOptions,
   useRegister,
 } from "@refinedev/core";
+import { School } from "lucide-react";
 
 export const SignUpForm = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -32,7 +34,7 @@ export const SignUpForm = () => {
 
   const Link = useLink();
 
-  const { title } = useRefineOptions();
+  const title = "Classroom";
 
   const { mutate: register } = useRegister();
 
@@ -51,6 +53,7 @@ export const SignUpForm = () => {
     }
 
     register({
+      name,
       email,
       password,
     });
@@ -77,19 +80,14 @@ export const SignUpForm = () => {
         "justify-center",
         "px-6",
         "py-8",
-        "min-h-svh"
+        "min-h-svh",
       )}
     >
       <div className={cn("flex", "items-center", "justify-center", "gap-2")}>
-        {title.icon && (
-          <div
-            className={cn("text-foreground", "[&>svg]:w-12", "[&>svg]:h-12")}
-          >
-            {title.icon}
-          </div>
-        )}
+        <div className={cn("text-foreground", "[&>svg]:w-12", "[&>svg]:h-12")}>
+          <School />
+        </div>
       </div>
-
       <Card className={cn("sm:w-[456px]", "p-12", "mt-6")}>
         <CardHeader className={cn("px-0")}>
           <CardTitle
@@ -97,7 +95,7 @@ export const SignUpForm = () => {
               "text-green-600",
               "dark:text-green-400",
               "text-3xl",
-              "font-semibold"
+              "font-semibold",
             )}
           >
             Sign up
@@ -105,7 +103,7 @@ export const SignUpForm = () => {
           <CardDescription
             className={cn("text-muted-foreground", "font-medium")}
           >
-            Welcome to lorem ipsum dolor.
+            Welcome to Classroom.
           </CardDescription>
         </CardHeader>
 
@@ -114,6 +112,17 @@ export const SignUpForm = () => {
         <CardContent className={cn("px-0")}>
           <form onSubmit={handleSignUp}>
             <div className={cn("flex", "flex-col", "gap-2")}>
+              <Label htmlFor="name">Full Name</Label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className={cn("flex", "flex-col", "gap-2", "mt-6")}>
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -157,7 +166,7 @@ export const SignUpForm = () => {
                 "mt-6",
                 "bg-green-600",
                 "hover:bg-green-700",
-                "text-white"
+                "text-white",
               )}
             >
               Sign up
@@ -231,7 +240,7 @@ export const SignUpForm = () => {
                 "text-blue-600",
                 "dark:text-blue-400",
                 "font-semibold",
-                "underline"
+                "underline",
               )}
             >
               Sign in

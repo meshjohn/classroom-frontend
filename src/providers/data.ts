@@ -6,8 +6,10 @@ import { createDataProvider, CreateDataProviderOptions } from "@refinedev/rest";
 const buildHttpError = async (response: Response): Promise<HttpError> => {
   let message = "Request failed.";
   try {
-    const payload = (await response.json()) as { message?: string };
-    if (payload?.message) message = payload.message;
+    const payload = (await response.json()) as { message?: string; error?: string };
+    // Backend returns 'error' field, but some endpoints might use 'message'
+    if (payload?.error) message = payload.error;
+    else if (payload?.message) message = payload.message;
   } catch {}
   return {
     message,
@@ -47,6 +49,7 @@ const options: CreateDataProviderOptions = {
     getEndpoint: ({ resource }) => resource,
     buildBodyParams: async ({ variables }) => variables,
     mapResponse: async (response) => {
+      if (!response.ok) throw await buildHttpError(response);
       const json: CreateResponse = await response.json();
       return json.data ?? [];
     },
