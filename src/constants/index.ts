@@ -58,12 +58,11 @@ export const ALLOWED_TYPES = [
 const getEnvVar = (key: string): string => {
   const value = import.meta.env[key];
   if (!value) {
-    throw new Error(`Missing environment vUncaught Error: Missing environment variable: VITE_CLOUDINARY_UPLOAD_URL
-    at getEnvVar (index.ts:61:11)
-    at index.ts:66:38ariable: ${key}`);
+    throw new Error(`Missing environment variable: ${key}`);
   }
   return value;
 };
+
 
 export const CLOUDINARY_UPLOAD_URL = getEnvVar("VITE_CLOUDINARY_UPLOAD_URL");
 export const CLOUDINARY_CLOUD_NAME = getEnvVar("VITE_CLOUDINARY_CLOUD_NAME");

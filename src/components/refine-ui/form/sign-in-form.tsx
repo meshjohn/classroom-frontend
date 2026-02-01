@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { CircleHelp } from "lucide-react";
+import { CircleHelp, School } from "lucide-react";
 
 import { InputPassword } from "@/components/refine-ui/form/input-password";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,7 @@ export const SignInForm = () => {
 
   const Link = useLink();
 
-  const { title } = useRefineOptions();
+  const title = "Classroom"
 
   const { mutate: login } = useLogin();
 
@@ -66,13 +66,11 @@ export const SignInForm = () => {
       )}
     >
       <div className={cn("flex", "items-center", "justify-center")}>
-        {title.icon && (
           <div
             className={cn("text-foreground", "[&>svg]:w-12", "[&>svg]:h-12")}
           >
-            {title.icon}
+            <School />
           </div>
-        )}
       </div>
 
       <Card className={cn("sm:w-[456px]", "p-12", "mt-6")}>
