@@ -26,7 +26,7 @@ export const authProvider: AuthProvider = {
         },
       };
     }
-    return { success: true, redirectTo: import.meta.env.VITE_FRONTEND_URL };
+    return { success: true, redirectTo: '/'};
   },
 
   register: async (params) => {
@@ -57,7 +57,7 @@ export const authProvider: AuthProvider = {
         };
       }
 
-      return { success: true, redirectTo: import.meta.env.VITE_FRONTEND_URL };
+      return { success: true, redirectTo: '/' };
     } catch (err) {
       return {
         success: false,

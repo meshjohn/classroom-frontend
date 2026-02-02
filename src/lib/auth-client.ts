@@ -2,7 +2,7 @@
 import { createAuthClient } from "better-auth/react";
 
 export const authClient = createAuthClient({
-  baseURL: process.env.VITE_BACKEND_BASE,
+  baseURL: import.meta.env.VITE_BACKEND_BASE,
   user: {
     additionalFields: {
       role: {
