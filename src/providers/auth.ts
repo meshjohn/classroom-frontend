@@ -18,6 +18,7 @@ export const authProvider: AuthProvider = {
     // MANUAL LOGIN
     const { data, error } = await authClient.signIn.email({ email, password });
     if (error) {
+      console.error("Login failed:", error);
       return {
         success: false,
         error: {
