@@ -189,7 +189,15 @@ function App() {
               <Toaster />
               <RefineKbar />
               <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
+              <DocumentTitleHandler
+              handler={({ resource, action }) => {
+                let title = "Classroom | University Management System";
+                if (resource && action) {
+                  title = `${resource.meta?.label || resource.name} | Classroom`;
+                }
+                return title;
+              }}
+            />
             </Refine>
           </DevtoolsProvider>
         </ThemeProvider>
